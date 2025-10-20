@@ -1,0 +1,53 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: payment-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: payments
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbit
+    hostname: rabbit
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+
+  user_service:
+    build:
+      context: ./user_service
+    container_name: user_service
+    command: python manage.py runserver 0.0.0.0:8000
+    environment:
+      - RABBITMQ_URL=amqp://guest:guest@rabbit:5672/
+      - DATABASE_URL=postgres://postgres:postgres@postgres:5432/payments
+    ports:
+      - "8000:8000"
+    depends_on:
+      - rabbitmq
+      - postgres
+
+  payment_service:
+    build:
+      context: ./payment_service
+    container_name: payment_service
+    environment:
+      - RABBITMQ_URL=amqp://guest:guest@rabbit:5672/
+      - DATABASE_URL=postgres://postgres:postgres@postgres:5432/payments
+    depends_on:
+      - rabbitmq
+      - postgres
+
+volumes:
+  pgdata:

@@ -1,0 +1,9 @@
+rabbitmq:
+  url: "amqp://guest:guest@localhost:5672/"
+  exchange: "events"
+  exchange_type: "topic"
+  queue: "payment_service"
+  routing_key: "user.created"
+
+database:
+  dsn: "postgres://user:password@localhost:5432/payments?sslmode=disable"
