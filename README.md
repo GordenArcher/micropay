@@ -57,8 +57,8 @@ event-driven-payments/
 1. Clone the repo:
 
 ```bash
-git clone <repo-url>
-cd event-driven-payments
+git clone https://github.com/GordenArcher/micropay
+cd micropay
 ```
 
 2. Build and start all services:
