@@ -27,7 +27,7 @@ payment_service/
 
 ---
 
-## ⚙️ Prerequisites
+## Prerequisites
 
 * Go 1.21+
 * Postgres database (with database `payments`)
@@ -35,12 +35,12 @@ payment_service/
 
 ---
 
-## 🏃‍♂️ Running Locally
+## Running Locally
 
 1. Clone the repository:
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/GordenArcher/micropay/tree/main/payment_service
 cd payment_service
 ```
 
@@ -61,7 +61,7 @@ The service will connect to RabbitMQ, listen for `user.created` events, and crea
 
 ---
 
-## 🔗 Environment Variables
+## Environment Variables
 
 | Variable       | Description                |
 | -------------- | -------------------------- |
