@@ -21,7 +21,7 @@ user_service/
 
 ---
 
-## ⚙️ Prerequisites
+## Prerequisites
 
 * Python 3.13+
 * Postgres database
@@ -34,7 +34,7 @@ user_service/
 1. Clone the repository:
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/GordenArcher/micropay/tree/main/user_service
 cd user_service
 ```
 
@@ -65,7 +65,7 @@ python manage.py runserver 0.0.0.0:8000
 
 ---
 
-## 🔗 Environment Variables
+## Environment Variables
 
 | Variable       | Description                |
 | -------------- | -------------------------- |
@@ -74,7 +74,7 @@ python manage.py runserver 0.0.0.0:8000
 
 ---
 
-## 📝 Functionality
+## Functionality
 
 * **User Registration:** `POST /api/users/register/`
   Example request:
@@ -104,7 +104,7 @@ python manage.py runserver 0.0.0.0:8000
 
 ---
 
-## 🛠️ Development Notes
+## Development Notes
 
 * Uses **Django signals** in `users/signals.py` to publish events.
 * Uses **functional views** for simplicity; no serializers are used to filter fields—all user fields are included in events.
